@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HTML Boilerplate</title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+
+    <!-- # Facebook Open Graph tags -->
+    <meta property="og:title" content=""/> 
+    <meta property="og:type" content="website"/> 
+    <meta property="og:url" content=""/> 
+    <meta property="og:image" content=""/> 
+    <meta property="og:description" content=""/>
+
+    <!-- #LinkedIn tags -->
+    <meta property="linkedIn:title" content=""/>
+    <meta property="linkedIn:url" content=""/>
+    <meta property="linkedIn:image" content=""/> 
+    <meta property="linkedIn:summary" content=""/>
+
+    <!-- css styles -->
+    <link href="//fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/base.min.css" />
+    <link rel="stylesheet" href="css/prism.coy.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- add to home screen -->
+    <!-- Android -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+            .then(function(reg){
+                console.log('service worker registered', reg);
+            }).catch(function(err) {
+                console.log("service worker not registered. Error: ", err)
+            });
+        }
+
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', function (e) {
+            // Prevent Chrome 67 and earlier from automatically showing the prompt
+            e.preventDefault();
+            // Stash the event so it can be triggered later.
+            deferredPrompt = e;
+            // Update UI notify the user they can add to home screen
+
+            // Show the prompt now
+            deferredPrompt.prompt();
+            // Wait for the user to respond to the prompt
+            deferredPrompt.userChoice
+                .then(function (choiceResult) {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('added to homescreen');
+                    } else {
+                        console.log('not added to homescreen');
+                    }
+                deferredPrompt = null;
+            });
+        });
+    </script>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="AddMe">
+    <link rel="apple-touch-icon" href="icons-192.png">
+
+    <!-- Windows Phone -->
+    <meta name="msapplication-TileImage" content="icons-192.png">
+    <meta name="msapplication-TileColor" content="#fff">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- fork me on github -->
+        <a href="https://github.com/bbog/">
+            <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+        </a>
+
+        <!-- main header -->
+        <h1>Add to home screen boilerplate</h1>
+        <hr/>
+
+        <p>Boilerplate code for the "Add to home screen" feature</p>
+
+        <hr>
+
+        <footer>Developed by <a href="http://bogdanbucur.eu">Bogdan BUCUR</a></footer>
+
+        <!-- code highlighting -->
+        <script src="js/prism.min.js"></script>
+    </div>
+</body>
